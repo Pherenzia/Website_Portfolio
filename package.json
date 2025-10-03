@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://kaiga.github.io/Website_Portfolio",
+  "homepage": "https://pherenzia.github.io/React_Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
