@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/mitchellriley', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/mitchellriley', icon: Linkedin },
-  { name: 'Email', href: 'mailto:mitchell@example.com', icon: Mail },
+  { name: 'GitHub', href: 'https://github.com/Pherenzia', icon: Github },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mitchell-riley/', icon: Linkedin },
+  { name: 'Email', href: 'mailto:d.r.mitchellriley@gmail.com', icon: Mail },
 ]
 
 const quickLinks = [
@@ -79,10 +79,10 @@ export default function Footer() {
             </h3>
             <div className="space-y-2">
               <a
-                href="mailto:mitchell@example.com"
+                href="mailto:d.r.mitchellriley@gmail.com"
                 className="block text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors duration-200 text-sm"
               >
-                mitchell@example.com
+                d.r.mitchellriley@gmail.com
               </a>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Available for freelance opportunities

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { GitHubRepository, Project } from '@/types'
 
 const GITHUB_API_BASE = 'https://api.github.com'
-const GITHUB_USERNAME = 'mitchellriley' // This should be replaced with actual GitHub username
+const GITHUB_USERNAME = 'Pherenzia' // This should be replaced with actual GitHub username
 
 // Sample data for development/testing
 const SAMPLE_PROJECTS = [
@@ -10,7 +10,7 @@ const SAMPLE_PROJECTS = [
     id: '1',
     title: 'E-Commerce Platform',
     description: 'A full-stack e-commerce platform built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, inventory management, and admin dashboard.',
-    githubUrl: 'https://github.com/mitchellriley/ecommerce-platform',
+    githubUrl: 'https://github.com/Pherenzia/ecommerce-platform',
     liveUrl: 'https://ecommerce-demo.mitchellriley.dev',
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe'],
     featured: true,
@@ -22,7 +22,7 @@ const SAMPLE_PROJECTS = [
     id: '2',
     title: 'Task Management App',
     description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-    githubUrl: 'https://github.com/mitchellriley/task-manager',
+    githubUrl: 'https://github.com/Pherenzia/task-manager',
     liveUrl: 'https://tasks.mitchellriley.dev',
     technologies: ['Vue.js', 'Express.js', 'MongoDB', 'Socket.io'],
     featured: true,
@@ -34,7 +34,7 @@ const SAMPLE_PROJECTS = [
     id: '3',
     title: 'Weather Dashboard',
     description: 'A responsive weather dashboard that displays current weather conditions, forecasts, and interactive maps using multiple weather APIs.',
-    githubUrl: 'https://github.com/mitchellriley/weather-dashboard',
+    githubUrl: 'https://github.com/Pherenzia/weather-dashboard',
     liveUrl: 'https://weather.mitchellriley.dev',
     technologies: ['React', 'JavaScript', 'Chart.js', 'OpenWeather API'],
     featured: true,
@@ -46,7 +46,7 @@ const SAMPLE_PROJECTS = [
     id: '4',
     title: 'RESTful API Service',
     description: 'A scalable RESTful API service with authentication, rate limiting, and comprehensive documentation. Built with best practices for security and performance.',
-    githubUrl: 'https://github.com/mitchellriley/api-service',
+    githubUrl: 'https://github.com/Pherenzia/api-service',
     technologies: ['Node.js', 'Express.js', 'JWT', 'Redis', 'Swagger'],
     featured: false,
     category: 'backend' as const,
@@ -57,7 +57,7 @@ const SAMPLE_PROJECTS = [
     id: '5',
     title: 'Mobile Expense Tracker',
     description: 'A cross-platform mobile application for tracking expenses with budget management, category analysis, and export functionality.',
-    githubUrl: 'https://github.com/mitchellriley/expense-tracker',
+    githubUrl: 'https://github.com/Pherenzia/expense-tracker',
     technologies: ['React Native', 'TypeScript', 'Firebase', 'Redux'],
     featured: false,
     category: 'mobile' as const,
@@ -68,7 +68,7 @@ const SAMPLE_PROJECTS = [
     id: '6',
     title: 'CLI Development Tool',
     description: 'A command-line interface tool for automating common development tasks, project setup, and deployment workflows.',
-    githubUrl: 'https://github.com/mitchellriley/dev-cli-tool',
+    githubUrl: 'https://github.com/Pherenzia/dev-cli-tool',
     technologies: ['Node.js', 'Commander.js', 'Inquirer.js', 'Chalk'],
     featured: false,
     category: 'tool' as const,
@@ -300,14 +300,14 @@ export const fetchUserProfile = async () => {
     // Return sample profile data when GitHub API is not available
     return {
       id: 123456,
-      login: 'mitchellriley',
+      login: 'Pherenzia',
       name: 'Mitchell Riley',
       bio: 'Full Stack Developer passionate about creating innovative solutions and delivering exceptional user experiences.',
       avatar_url: 'https://via.placeholder.com/200x200/0ea5e9/ffffff?text=MR',
-      html_url: 'https://github.com/mitchellriley',
-      blog: 'https://mitchellriley.dev',
-      location: 'San Francisco, CA',
-      email: 'mitchell@example.com',
+      html_url: 'https://github.com/Pherenzia',
+      blog: 'https://pherenzia.github.io/Portfolio-site/',
+      location: 'San Diego, CA',
+      email: 'd.r.mitchellriley@gmail.com',
       public_repos: 25,
       public_gists: 12,
       followers: 150,

@@ -8,22 +8,22 @@ const contactMethods = [
     icon: Mail,
     title: 'Email',
     description: 'Send me an email anytime',
-    value: 'mitchell@example.com',
-    href: 'mailto:mitchell@example.com',
+    value: 'd.r.mitchellriley@gmail.com',
+    href: 'mailto:d.r.mitchellriley@gmail.com',
     primary: true,
   },
   {
     icon: Phone,
     title: 'Phone',
     description: 'Call me for urgent matters',
-    value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    value: '808-203-7139',
+    href: 'tel:8082037139',
   },
   {
     icon: MapPin,
     title: 'Location',
-    description: 'Based in San Francisco',
-    value: 'San Francisco, CA',
+    description: 'Based in San Diego',
+    value: 'San Diego, CA',
     href: '#',
   },
 ]
@@ -31,13 +31,13 @@ const contactMethods = [
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com/mitchellriley',
+    href: 'https://github.com/Pherenzia',
     icon: Github,
     description: 'View my code and contributions',
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/mitchellriley',
+    href: 'https://www.linkedin.com/in/mitchell-riley/',
     icon: Linkedin,
     description: 'Connect with me professionally',
   },
@@ -205,7 +205,7 @@ export default function ContactInfo() {
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Let's discuss your project and bring your ideas to life.
         </p>
-        <Button variant="primary" href="mailto:mitchell@example.com">
+        <Button variant="primary" href="mailto:d.r.mitchellriley@gmail.com">
           Start a Conversation
         </Button>
       </motion.div>

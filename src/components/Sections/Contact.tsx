@@ -7,19 +7,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'mitchell@example.com',
-    href: 'mailto:mitchell@example.com',
+    value: 'd.r.mitchellriley@gmail.com',
+    href: 'mailto:d.r.mitchellriley@gmail.com',
   },
   {
     icon: Phone,
     title: 'Phone',
-    value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    value: '808-203-7139',
+    href: 'tel:8082037139',
   },
   {
     icon: MapPin,
     title: 'Location',
-    value: 'San Francisco, CA',
+    value: 'San Diego, CA',
     href: '#',
   },
   {

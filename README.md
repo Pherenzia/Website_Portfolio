@@ -189,6 +189,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Mitchell Riley - [@memechell.riley](https://www.instagram.com/memechell.riley/)
+Mitchell Riley - [d.r.mitchellriley@gmail.com](mailto:d.r.mitchellriley@gmail.com) - 808-203-7139
 
-Project Link: [https://github.com/Pherenzia/React_Portfolio](https://github.com/Pherenzia/React_Portfolio)
+- LinkedIn: [https://www.linkedin.com/in/mitchell-riley/](https://www.linkedin.com/in/mitchell-riley/)
+- GitHub: [https://github.com/Pherenzia](https://github.com/Pherenzia)
+- Instagram: [@memechell.riley](https://www.instagram.com/memechell.riley/)
+
+Project Link: [https://github.com/Pherenzia/Website_Portfolio](https://github.com/Pherenzia/Website_Portfolio)

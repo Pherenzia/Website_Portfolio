@@ -10,7 +10,7 @@ export default function NotFound() {
       <MetaTags
         title="404 - Page Not Found"
         description="The page you're looking for doesn't exist."
-        url="https://kaiga.github.io/Website_Portfolio/404"
+        url="https://Pherenzia.github.io/Website_Portfolio/404"
       />
       
       <div className="min-h-screen flex items-center justify-center px-4">

@@ -3,9 +3,9 @@ import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
 import Button from '@/components/UI/Button'
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/mitchellriley', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/mitchellriley', icon: Linkedin },
-  { name: 'Email', href: 'mailto:mitchell@example.com', icon: Mail },
+  { name: 'GitHub', href: 'https://github.com/Pherenzia', icon: Github },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mitchell-riley/', icon: Linkedin },
+  { name: 'Email', href: 'mailto:d.r.mitchellriley@gmail.com', icon: Mail },
 ]
 
 export default function Hero() {

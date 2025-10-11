@@ -35,4 +35,4 @@ echo "🌐 Deploying to GitHub Pages..."
 npm run deploy
 
 echo "✅ Deployment complete!"
-echo "🌐 Your portfolio should be available at: https://kaiga.github.io/Website_Portfolio"
+echo "🌐 Your portfolio should be available at: https://Pherenzia.github.io/Website_Portfolio"

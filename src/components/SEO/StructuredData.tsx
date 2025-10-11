@@ -31,21 +31,21 @@ export function PersonStructuredData() {
     name: 'Mitchell Riley',
     jobTitle: 'Full Stack Developer',
     description: 'Full Stack Developer passionate about creating innovative solutions and delivering exceptional user experiences.',
-    url: 'https://kaiga.github.io/Website_Portfolio',
+    url: 'https://Pherenzia.github.io/Website_Portfolio',
     image: 'https://via.placeholder.com/200x200/0ea5e9/ffffff?text=MR',
     sameAs: [
-      'https://github.com/mitchellriley',
-      'https://linkedin.com/in/mitchellriley',
+      'https://github.com/Pherenzia',
+      'https://www.linkedin.com/in/mitchell-riley/',
       'https://twitter.com/mitchellriley',
     ],
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'San Francisco',
+      addressLocality: 'San Diego',
       addressRegion: 'CA',
       addressCountry: 'US',
     },
-    email: 'mitchell@example.com',
-    telephone: '+1-555-123-4567',
+    email: 'd.r.mitchellriley@gmail.com',
+    telephone: '808-203-7139',
     knowsAbout: [
       'React',
       'TypeScript',
@@ -73,7 +73,7 @@ export function WebSiteStructuredData() {
   const websiteData = {
     name: 'Mitchell Riley - Full Stack Developer',
     description: 'Mitchell Riley - Full Stack Developer Portfolio. Showcasing innovative projects and technical expertise.',
-    url: 'https://kaiga.github.io/Website_Portfolio',
+    url: 'https://Pherenzia.github.io/Website_Portfolio',
     author: {
       '@type': 'Person',
       name: 'Mitchell Riley',
@@ -86,7 +86,7 @@ export function WebSiteStructuredData() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://mitchellriley.dev/search?q={search_term_string}',
+        urlTemplate: 'https://Pherenzia.github.io/Website_Portfolio/search?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
@@ -99,7 +99,7 @@ export function OrganizationStructuredData() {
   const organizationData = {
     name: 'Mitchell Riley - Portfolio',
     description: 'Professional portfolio showcasing full stack development projects and expertise.',
-    url: 'https://kaiga.github.io/Website_Portfolio',
+    url: 'https://Pherenzia.github.io/Website_Portfolio',
     logo: 'https://via.placeholder.com/100x100/0ea5e9/ffffff?text=MR',
     founder: {
       '@type': 'Person',
@@ -107,9 +107,9 @@ export function OrganizationStructuredData() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-555-123-4567',
+      telephone: '808-203-7139',
       contactType: 'customer service',
-      email: 'mitchell@example.com',
+      email: 'd.r.mitchellriley@gmail.com',
     },
   }
 

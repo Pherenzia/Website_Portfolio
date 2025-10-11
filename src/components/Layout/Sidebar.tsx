@@ -15,9 +15,9 @@ const navigation = [
 ]
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/mitchellriley', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/mitchellriley', icon: Linkedin },
-  { name: 'Email', href: 'mailto:mitchell@example.com', icon: Mail },
+  { name: 'GitHub', href: 'https://github.com/Pherenzia', icon: Github },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mitchell-riley/', icon: Linkedin },
+  { name: 'Email', href: 'mailto:d.r.mitchellriley@gmail.com', icon: Mail },
   { name: 'Resume', href: '/resume.pdf', icon: FileText },
 ]
 

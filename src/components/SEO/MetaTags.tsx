@@ -30,14 +30,14 @@ export default function MetaTags({
     'GitHub',
   ],
   image = 'https://via.placeholder.com/1200x630/0ea5e9/ffffff?text=Mitchell+Riley+-+Full+Stack+Developer',
-  url = 'https://kaiga.github.io/Website_Portfolio',
+  url = 'https://Pherenzia.github.io/Website_Portfolio',
   type = 'website',
   author = 'Mitchell Riley',
   publishedTime,
   modifiedTime,
 }: MetaTagsProps) {
   const fullTitle = title.includes('Mitchell Riley') ? title : `${title} | Mitchell Riley`
-  const fullUrl = url.startsWith('http') ? url : `https://kaiga.github.io/Website_Portfolio${url}`
+  const fullUrl = url.startsWith('http') ? url : `https://Pherenzia.github.io/Website_Portfolio${url}`
 
   return (
     <Helmet>
@@ -103,7 +103,7 @@ export function HomeMetaTags() {
     <MetaTags
       title="Mitchell Riley - Full Stack Developer"
       description="Mitchell Riley - Full Stack Developer Portfolio. Showcasing innovative projects and technical expertise in React, TypeScript, and modern web technologies."
-      url="https://kaiga.github.io/Website_Portfolio"
+      url="https://Pherenzia.github.io/Website_Portfolio"
     />
   )
 }
@@ -113,7 +113,7 @@ export function AboutMetaTags() {
     <MetaTags
       title="About - Mitchell Riley"
       description="Learn more about Mitchell Riley - Full Stack Developer with expertise in React, TypeScript, and modern web technologies."
-      url="https://kaiga.github.io/Website_Portfolio/about"
+      url="https://Pherenzia.github.io/Website_Portfolio/about"
     />
   )
 }
@@ -123,7 +123,7 @@ export function ProjectsMetaTags() {
     <MetaTags
       title="Projects - Mitchell Riley"
       description="Explore Mitchell Riley's portfolio of web development projects, showcasing expertise in React, TypeScript, and modern technologies."
-      url="https://kaiga.github.io/Website_Portfolio/projects"
+      url="https://Pherenzia.github.io/Website_Portfolio/projects"
     />
   )
 }
@@ -133,7 +133,7 @@ export function ContactMetaTags() {
     <MetaTags
       title="Contact - Mitchell Riley"
       description="Get in touch with Mitchell Riley - Full Stack Developer. Available for freelance opportunities and collaborations."
-      url="https://kaiga.github.io/Website_Portfolio/contact"
+      url="https://Pherenzia.github.io/Website_Portfolio/contact"
     />
   )
 }

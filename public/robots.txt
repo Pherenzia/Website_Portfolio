@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://mitchellriley.dev/sitemap.xml
+Sitemap: https://Pherenzia.github.io/Website_Portfolio/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
