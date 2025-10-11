@@ -77,25 +77,44 @@ export default function ContactForm() {
     setStatus({ type: 'loading', message: 'Sending message...' })
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData)
-      
-      setStatus({ 
-        type: 'success', 
-        message: 'Thank you! Your message has been sent successfully.' 
+      // Submit to Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '7af09948-fae1-488c-b497-73f5008c23dc',
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: formData.name,
+          replyto: formData.email,
+        })
       })
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setStatus({ 
+          type: 'success', 
+          message: 'Thank you! Your message has been sent successfully.' 
+        })
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        })
+      } else {
+        throw new Error(result.message || 'Failed to send message')
+      }
     } catch (error) {
+      console.error('Form submission error:', error)
       setStatus({ 
         type: 'error', 
         message: 'Failed to send message. Please try again later.' 
