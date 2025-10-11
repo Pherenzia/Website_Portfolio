@@ -8,7 +8,7 @@ The error "The process '/usr/bin/git' failed with exit code 128" indicates authe
 
 ### 1. Repository Settings
 
-Go to your repository: `https://github.com/Pherenzia/React_Portfolio`
+Go to your repository: `https://github.com/Pherenzia/Website_Portfolio`
 
 #### A. Enable GitHub Pages
 1. **Settings** → **Pages**
@@ -123,7 +123,7 @@ npm run deploy
 After completing these steps:
 1. **Push to main branch** triggers deployment
 2. **Actions tab** shows successful workflow run
-3. **Site available** at: `https://pherenzia.github.io/React_Portfolio`
+3. **Site available** at: `https://pherenzia.github.io/Website_Portfolio`
 
 ## 🆘 Still Need Help?
 
