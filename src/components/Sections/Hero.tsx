@@ -1,18 +1,31 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail, Check } from 'lucide-react'
 import Button from '@/components/UI/Button'
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/Pherenzia', icon: Github },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mitchell-riley/', icon: Linkedin },
-  { name: 'Email', href: 'mailto:d.r.mitchellriley@gmail.com', icon: Mail },
+  { name: 'GitHub', href: 'https://github.com/Pherenzia', icon: Github, isExternal: true },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mitchell-riley/', icon: Linkedin, isExternal: true },
+  { name: 'Email', email: 'd.r.mitchellriley@gmail.com', icon: Mail, isExternal: false },
 ]
 
 export default function Hero() {
+  const [emailCopied, setEmailCopied] = useState(false)
+
   const scrollToNext = () => {
     const nextSection = document.getElementById('about')
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const copyEmailToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText('d.r.mitchellriley@gmail.com')
+      setEmailCopied(true)
+      setTimeout(() => setEmailCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy email:', err)
     }
   }
 
@@ -78,10 +91,10 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
-            <Button variant="primary" size="lg" href="/projects">
+            <Button variant="primary" size="lg" href="#/projects">
               View My Work
             </Button>
-            <Button variant="secondary" size="lg" href="/contact">
+            <Button variant="secondary" size="lg" href="#/contact">
               Get In Touch
             </Button>
           </motion.div>
@@ -95,6 +108,38 @@ export default function Hero() {
           >
             {socialLinks.map((link) => {
               const Icon = link.icon
+              const isEmail = link.name === 'Email'
+              
+              if (isEmail) {
+                return (
+                  <motion.button
+                    key={link.name}
+                    onClick={copyEmailToClipboard}
+                    className="relative p-3 rounded-full bg-white dark:bg-secondary-800 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label="Copy email to clipboard"
+                    title="Copy email to clipboard"
+                  >
+                    {emailCopied ? (
+                      <Check className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    ) : (
+                      <Icon className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
+                    )}
+                    {emailCopied && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-3 py-1 rounded-lg whitespace-nowrap"
+                      >
+                        Email copied!
+                      </motion.div>
+                    )}
+                  </motion.button>
+                )
+              }
+              
               return (
                 <motion.a
                   key={link.name}
