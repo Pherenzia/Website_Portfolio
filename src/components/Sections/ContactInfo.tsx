@@ -15,7 +15,7 @@ const contactMethods = [
   {
     icon: Phone,
     title: 'Phone',
-    description: 'Text me for any quick questions',
+    description: 'Available for calls and messages',
     value: '808-203-7139',
     href: 'tel:8082037139',
   },

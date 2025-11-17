@@ -32,6 +32,7 @@ const skills = [
   { name: 'Git', level: 'expert', category: 'tool' },
   { name: 'Docker', level: 'intermediate', category: 'tool' },
   { name: 'AWS', level: 'intermediate', category: 'tool' },
+  { name: 'Firebase', level: 'advanced', category: 'tool' },
   { name: 'Vercel', level: 'advanced', category: 'tool' },
   { name: 'Figma', level: 'intermediate', category: 'tool' },
   { name: 'Jest', level: 'advanced', category: 'tool' },
