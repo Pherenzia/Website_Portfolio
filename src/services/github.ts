@@ -209,6 +209,71 @@ export const transformRepositoryToProject = (repo: GitHubRepository): Project =>
   }
 }
 
+// List of projects to exclude from the portfolio
+const EXCLUDED_PROJECTS = [
+  'gh-actions-demo',
+  'gh actions demo',
+  'team-profile-generator',
+  'team profile generator',
+  'github-cd',
+  'github cd',
+  '00-practice-app',
+  '00 practice app',
+  'css-snippet-cheatsheat',
+  'css snippet cheatsheat',
+  'personal_project',
+  'personal-project',
+  'personal project',
+  'progressive-budget',
+  'progressive budget',
+  'email-address-regex-gist',
+  'email address regex gist',
+  'daily-planner',
+  'daily planner',
+  'quiz-app',
+  'quiz app',
+  'pull-request-demo',
+  'pull request demo',
+  'git-init-sample',
+  'git init sample',
+  'first-day-repo',
+  'first day repo',
+  'landing-page',
+  'landing page',
+  'css-snippet-cheatsheet1',
+  'css snippet cheatsheet1',
+  'css-snippet-cheatsheet',
+  'css snippet cheatsheet',
+  'password-generator-hw',
+  'password generator hw',
+  'password-generator',
+  'password generator',
+]
+
+// Check if a repository should be excluded
+const shouldExcludeProject = (repo: GitHubRepository): boolean => {
+  const name = repo.name.toLowerCase()
+  const description = (repo.description || '').toLowerCase()
+  const title = name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()).toLowerCase()
+  
+  // Check if name or description contains "homework"
+  if (name.includes('homework') || description.includes('homework')) {
+    return true
+  }
+  
+  // Check against excluded projects list
+  for (const excluded of EXCLUDED_PROJECTS) {
+    const excludedLower = excluded.toLowerCase()
+    if (name.includes(excludedLower) || 
+        title.includes(excludedLower) || 
+        description.includes(excludedLower)) {
+      return true
+    }
+  }
+  
+  return false
+}
+
 // Determine project category based on repository data
 const determineProjectCategory = (repo: GitHubRepository): Project['category'] => {
   const name = repo.name.toLowerCase()
@@ -247,9 +312,12 @@ export const fetchProjects = async (): Promise<Project[]> => {
     // Try to fetch from GitHub API first
     const repositories = await fetchUserRepositories()
     
+    // Filter out excluded projects
+    const filteredRepositories = repositories.filter(repo => !shouldExcludeProject(repo))
+    
     // Fetch topics for each repository (in parallel)
     const repositoriesWithTopics = await Promise.all(
-      repositories.map(async (repo) => {
+      filteredRepositories.map(async (repo) => {
         try {
           const topics = await fetchRepositoryTopics(repo.name)
           return { ...repo, topics }
