@@ -16,8 +16,8 @@ This guide will help you deploy your Mitchell Riley portfolio to GitHub Pages.
 1. **Create a new repository** on GitHub (or use existing one)
 2. **Clone the repository** locally:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Pherenzia/Website_Portfolio.git
+   cd Website_Portfolio
    ```
 
 ### 2. Environment Configuration

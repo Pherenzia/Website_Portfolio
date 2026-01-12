@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. This portfolio showcases projects, skills, and experience in a clean, professional design.
 
+🌐 **Live Site**: [https://pherenzia.github.io/Website_Portfolio/](https://pherenzia.github.io/Website_Portfolio/)
+
 ## 🚀 Features
 
 - **Modern Tech Stack**: React 18, TypeScript, Vite, Tailwind CSS
@@ -34,8 +36,8 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/mitchellriley/portfolio.git
-   cd portfolio
+   git clone https://github.com/Pherenzia/Website_Portfolio.git
+   cd Website_Portfolio
    ```
 
 2. **Install dependencies**
@@ -167,17 +169,9 @@ Projects are automatically fetched from GitHub, but you can also add manual proj
 - Safari (latest)
 - Edge (latest)
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -m 'Add feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is open source and available for personal and commercial use.
 
 ## 🙏 Acknowledgments
 
