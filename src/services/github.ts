@@ -2,9 +2,9 @@ import axios from 'axios'
 import { GitHubRepository, Project } from '@/types'
 
 const GITHUB_API_BASE = 'https://api.github.com'
-const GITHUB_USERNAME = 'Pherenzia' // This should be replaced with actual GitHub username
+const GITHUB_USERNAME = 'Pherenzia'
 
-// Sample data for development/testing
+const SAMPLE_PROJECTS = [
 const SAMPLE_PROJECTS = [
   {
     id: '1',
@@ -77,11 +77,9 @@ const SAMPLE_PROJECTS = [
   },
 ]
 
-// Rate limiting and caching
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const CACHE_DURATION = 5 * 60 * 1000
 const cache = new Map<string, { data: any; timestamp: number }>()
 
-// Create axios instance with default config
 const githubApi = axios.create({
   baseURL: GITHUB_API_BASE,
   timeout: 10000,
@@ -91,7 +89,6 @@ const githubApi = axios.create({
   },
 })
 
-// Request interceptor for caching
 githubApi.interceptors.request.use((config) => {
   const cacheKey = `${config.method}:${config.url}`
   const cached = cache.get(cacheKey)
@@ -106,7 +103,6 @@ githubApi.interceptors.request.use((config) => {
   return config
 })
 
-// Response interceptor for caching successful responses
 githubApi.interceptors.response.use(
   (response) => {
     const cacheKey = `${response.config.method}:${response.config.url}`
@@ -124,7 +120,6 @@ githubApi.interceptors.response.use(
   }
 )
 
-// Error handler for GitHub API
 const handleGitHubError = (error: any) => {
   if (error.response) {
     switch (error.response.status) {
@@ -144,7 +139,6 @@ const handleGitHubError = (error: any) => {
   }
 }
 
-// Fetch user repositories
 export const fetchUserRepositories = async (): Promise<GitHubRepository[]> => {
   try {
     const response = await githubApi.get(`/users/${GITHUB_USERNAME}/repos`, {
@@ -167,7 +161,6 @@ export const fetchUserRepositories = async (): Promise<GitHubRepository[]> => {
   }
 }
 
-// Fetch repository details
 export const fetchRepository = async (repoName: string): Promise<GitHubRepository> => {
   try {
     const response = await githubApi.get(`/repos/${GITHUB_USERNAME}/${repoName}`)
@@ -178,7 +171,6 @@ export const fetchRepository = async (repoName: string): Promise<GitHubRepositor
   }
 }
 
-// Fetch repository topics
 export const fetchRepositoryTopics = async (repoName: string): Promise<string[]> => {
   try {
     const response = await githubApi.get(`/repos/${GITHUB_USERNAME}/${repoName}/topics`, {
@@ -193,8 +185,14 @@ export const fetchRepositoryTopics = async (repoName: string): Promise<string[]>
   }
 }
 
-// Transform GitHub repository to Project
+const FEATURED_PROJECTS = ['budgeting-app', 'budgetingapp', 'yokaigacha', 'yokai-gacha']
+
 export const transformRepositoryToProject = (repo: GitHubRepository): Project => {
+  const normalizeRepoName = (name: string) => name.toLowerCase().replace(/[-_\s]/g, '')
+  const repoNameNormalized = normalizeRepoName(repo.name)
+  const isFeaturedProject = FEATURED_PROJECTS.some(name => 
+    normalizeRepoName(name) === repoNameNormalized
+  )
   return {
     id: repo.id.toString(),
     title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
@@ -202,14 +200,13 @@ export const transformRepositoryToProject = (repo: GitHubRepository): Project =>
     githubUrl: repo.html_url,
     liveUrl: repo.homepage || undefined,
     technologies: [repo.language].filter(Boolean) as string[],
-    featured: repo.stargazers_count > 5 || repo.forks_count > 2,
+    featured: isFeaturedProject || repo.stargazers_count > 5 || repo.forks_count > 2,
     category: determineProjectCategory(repo),
     createdAt: repo.created_at,
     updatedAt: repo.updated_at,
   }
 }
 
-// List of projects to exclude from the portfolio
 const EXCLUDED_PROJECTS = [
   'gh-actions-demo',
   'gh actions demo',
@@ -250,18 +247,15 @@ const EXCLUDED_PROJECTS = [
   'password generator',
 ]
 
-// Check if a repository should be excluded
 const shouldExcludeProject = (repo: GitHubRepository): boolean => {
   const name = repo.name.toLowerCase()
   const description = (repo.description || '').toLowerCase()
   const title = name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()).toLowerCase()
   
-  // Check if name or description contains "homework"
   if (name.includes('homework') || description.includes('homework')) {
     return true
   }
   
-  // Check against excluded projects list
   for (const excluded of EXCLUDED_PROJECTS) {
     const excludedLower = excluded.toLowerCase()
     if (name.includes(excludedLower) || 
@@ -274,7 +268,6 @@ const shouldExcludeProject = (repo: GitHubRepository): boolean => {
   return false
 }
 
-// Determine project category based on repository data
 const determineProjectCategory = (repo: GitHubRepository): Project['category'] => {
   const name = repo.name.toLowerCase()
   const description = (repo.description || '').toLowerCase()
@@ -306,16 +299,11 @@ const determineProjectCategory = (repo: GitHubRepository): Project['category'] =
   return 'web'
 }
 
-// Fetch and transform all projects
 export const fetchProjects = async (): Promise<Project[]> => {
   try {
-    // Try to fetch from GitHub API first
     const repositories = await fetchUserRepositories()
-    
-    // Filter out excluded projects
     const filteredRepositories = repositories.filter(repo => !shouldExcludeProject(repo))
     
-    // Fetch topics for each repository (in parallel)
     const repositoriesWithTopics = await Promise.all(
       filteredRepositories.map(async (repo) => {
         try {
@@ -328,16 +316,25 @@ export const fetchProjects = async (): Promise<Project[]> => {
       })
     )
     
-    // Transform repositories to projects
     const projects = repositoriesWithTopics.map(transformRepositoryToProject)
     
-    // Sort by featured status, then by stars, then by updated date
     return projects.sort((a, b) => {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
       
       const repoA = repositoriesWithTopics.find(r => r.id.toString() === a.id)
       const repoB = repositoriesWithTopics.find(r => r.id.toString() === b.id)
+      
+      const normalizeRepoName = (name: string) => name.toLowerCase().replace(/[-_\s]/g, '')
+      const isAFeatured = repoA && FEATURED_PROJECTS.some(name => 
+        normalizeRepoName(repoA.name) === normalizeRepoName(name)
+      )
+      const isBFeatured = repoB && FEATURED_PROJECTS.some(name => 
+        normalizeRepoName(repoB.name) === normalizeRepoName(name)
+      )
+      
+      if (isAFeatured && !isBFeatured) return -1
+      if (!isAFeatured && isBFeatured) return 1
       
       if (repoA && repoB) {
         if (repoA.stargazers_count !== repoB.stargazers_count) {
@@ -349,7 +346,6 @@ export const fetchProjects = async (): Promise<Project[]> => {
     })
   } catch (error) {
     console.warn('Failed to fetch projects from GitHub, using sample data:', error)
-    // Return sample data when GitHub API is not available
     return SAMPLE_PROJECTS.sort((a, b) => {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
@@ -358,14 +354,12 @@ export const fetchProjects = async (): Promise<Project[]> => {
   }
 }
 
-// Fetch user profile information
 export const fetchUserProfile = async () => {
   try {
     const response = await githubApi.get(`/users/${GITHUB_USERNAME}`)
     return response.data
   } catch (error) {
     console.warn('Failed to fetch user profile from GitHub, using sample data:', error)
-    // Return sample profile data when GitHub API is not available
     return {
       id: 123456,
       login: 'Pherenzia',

@@ -1,11 +1,8 @@
-// Input validation utilities for security
-
 export interface ValidationResult {
   isValid: boolean
   errors: string[]
 }
 
-// Email validation
 export const validateEmail = (email: string): ValidationResult => {
   const errors: string[] = []
   
@@ -14,18 +11,15 @@ export const validateEmail = (email: string): ValidationResult => {
     return { isValid: false, errors }
   }
   
-  // Basic email format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
     errors.push('Please enter a valid email address')
   }
   
-  // Length validation
   if (email.length > 254) {
     errors.push('Email address is too long')
   }
   
-  // Check for suspicious patterns
   if (email.includes('..') || email.includes('@.') || email.includes('.@')) {
     errors.push('Email address contains invalid characters')
   }
@@ -36,7 +30,6 @@ export const validateEmail = (email: string): ValidationResult => {
   }
 }
 
-// Name validation
 export const validateName = (name: string): ValidationResult => {
   const errors: string[] = []
   
@@ -45,7 +38,6 @@ export const validateName = (name: string): ValidationResult => {
     return { isValid: false, errors }
   }
   
-  // Length validation
   if (name.length < 2) {
     errors.push('Name must be at least 2 characters long')
   }
@@ -54,13 +46,11 @@ export const validateName = (name: string): ValidationResult => {
     errors.push('Name must be less than 50 characters long')
   }
   
-  // Character validation (allow letters, spaces, hyphens, apostrophes)
   const nameRegex = /^[a-zA-Z\s\-']+$/
   if (!nameRegex.test(name)) {
     errors.push('Name can only contain letters, spaces, hyphens, and apostrophes')
   }
   
-  // Check for suspicious patterns
   if (name.includes('  ')) {
     errors.push('Name cannot contain consecutive spaces')
   }
@@ -71,7 +61,6 @@ export const validateName = (name: string): ValidationResult => {
   }
 }
 
-// Message validation
 export const validateMessage = (message: string): ValidationResult => {
   const errors: string[] = []
   
@@ -80,7 +69,6 @@ export const validateMessage = (message: string): ValidationResult => {
     return { isValid: false, errors }
   }
   
-  // Length validation
   if (message.length < 10) {
     errors.push('Message must be at least 10 characters long')
   }
@@ -89,7 +77,6 @@ export const validateMessage = (message: string): ValidationResult => {
     errors.push('Message must be less than 2000 characters long')
   }
   
-  // Check for suspicious patterns (basic XSS prevention)
   const suspiciousPatterns = [
     /<script/i,
     /javascript:/i,
@@ -112,7 +99,6 @@ export const validateMessage = (message: string): ValidationResult => {
   }
 }
 
-// Subject validation
 export const validateSubject = (subject: string): ValidationResult => {
   const errors: string[] = []
   
@@ -121,7 +107,6 @@ export const validateSubject = (subject: string): ValidationResult => {
     return { isValid: false, errors }
   }
   
-  // Length validation
   if (subject.length < 3) {
     errors.push('Subject must be at least 3 characters long')
   }
@@ -130,7 +115,6 @@ export const validateSubject = (subject: string): ValidationResult => {
     errors.push('Subject must be less than 100 characters long')
   }
   
-  // Check for suspicious patterns
   const suspiciousPatterns = [
     /<script/i,
     /javascript:/i,
@@ -150,7 +134,6 @@ export const validateSubject = (subject: string): ValidationResult => {
   }
 }
 
-// URL validation (for external links)
 export const validateUrl = (url: string): ValidationResult => {
   const errors: string[] = []
   
@@ -162,12 +145,10 @@ export const validateUrl = (url: string): ValidationResult => {
   try {
     const urlObj = new URL(url)
     
-    // Only allow http and https protocols
     if (!['http:', 'https:'].includes(urlObj.protocol)) {
       errors.push('Only HTTP and HTTPS URLs are allowed')
     }
     
-    // Check for suspicious domains (basic check)
     const suspiciousDomains = [
       'localhost',
       '127.0.0.1',
@@ -188,7 +169,6 @@ export const validateUrl = (url: string): ValidationResult => {
   }
 }
 
-// Sanitize input (basic HTML sanitization)
 export const sanitizeInput = (input: string): string => {
   if (!input) return ''
   
@@ -201,16 +181,13 @@ export const sanitizeInput = (input: string): string => {
     .trim()
 }
 
-// Rate limiting simulation (in a real app, this would be server-side)
 export const checkRateLimit = (): boolean => {
   const key = 'contact_form_submissions'
   const now = Date.now()
-  const windowMs = 15 * 60 * 1000 // 15 minutes
+  const windowMs = 15 * 60 * 1000
   const maxRequests = 5
   
   const submissions = JSON.parse(localStorage.getItem(key) || '[]')
-  
-  // Filter submissions within the time window
   const recentSubmissions = submissions.filter((timestamp: number) => 
     now - timestamp < windowMs
   )
@@ -219,14 +196,12 @@ export const checkRateLimit = (): boolean => {
     return false
   }
   
-  // Add current submission
   recentSubmissions.push(now)
   localStorage.setItem(key, JSON.stringify(recentSubmissions))
   
   return true
 }
 
-// Form validation helper
 export const validateContactForm = (formData: {
   name: string
   email: string

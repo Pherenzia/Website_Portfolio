@@ -97,7 +97,6 @@ export default function MetaTags({
   )
 }
 
-// Predefined meta tags for different pages
 export function HomeMetaTags() {
   return (
     <MetaTags

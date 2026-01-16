@@ -29,20 +29,15 @@ export default function Header({ onMenuClick }: HeaderProps) {
   }, [])
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
-    console.log('Initial theme check:', { savedTheme, prefersDark })
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       setIsDarkMode(true)
       document.documentElement.classList.add('dark')
-      console.log('Initialized with dark mode')
     } else {
       setIsDarkMode(false)
       document.documentElement.classList.remove('dark')
-      console.log('Initialized with light mode')
     }
   }, [])
 
@@ -50,19 +45,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
     const newTheme = !isDarkMode
     setIsDarkMode(newTheme)
     
-    console.log('Toggling theme to:', newTheme ? 'dark' : 'light')
-    
     if (newTheme) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
-      console.log('Added dark class to html element')
     } else {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
-      console.log('Removed dark class from html element')
     }
-    
-    console.log('Current html classes:', document.documentElement.className)
   }
 
   return (

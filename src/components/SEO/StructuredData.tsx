@@ -25,7 +25,6 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
   )
 }
 
-// Predefined structured data components
 export function PersonStructuredData() {
   const personData = {
     name: 'Mitchell Riley',

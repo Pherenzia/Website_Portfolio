@@ -7,7 +7,6 @@ import Card from '@/components/UI/Card'
 import Badge from '@/components/UI/Badge'
 import Button from '@/components/UI/Button'
 
-// Function to get color based on project category
 const getProjectColor = (category: string): string => {
   const colors: Record<string, string> = {
     web: '3b82f6',      // Blue

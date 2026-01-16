@@ -55,7 +55,6 @@ export default function ContactForm() {
       return false
     }
     
-    // Check rate limiting
     if (!checkRateLimit()) {
       setStatus({ 
         type: 'error', 
@@ -77,7 +76,6 @@ export default function ContactForm() {
     setStatus({ type: 'loading', message: 'Sending message...' })
 
     try {
-      // Submit to Web3Forms
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -103,7 +101,6 @@ export default function ContactForm() {
           message: 'Thank you! Your message has been sent successfully.' 
         })
         
-        // Reset form
         setFormData({
           name: '',
           email: '',
